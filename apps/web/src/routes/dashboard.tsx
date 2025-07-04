@@ -107,16 +107,7 @@ function RouteComponent() {
   );
   const openDialog = () => setShowDialog(true);
   const closeDialog = () => setShowDialog(false);
-  // const closeEditDialog = () => setEditingTask(null);
-
-  // const startEditing = (task: Task | null) => {
-  //   if (task) {
-  //     setEditingTask(task);
-  //     setEditedTitle(task.title);
-  //     setEditedDescription(task.description);
-  //     setEditedPriority(task.priority);
-  //   }
-  // };
+  
 
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl">
@@ -177,8 +168,8 @@ function RouteComponent() {
                   title: taskRaw.title,
                   description: taskRaw.description,
                   priority: taskRaw.priority,
-                    createdAt: taskRaw.createdAt, // ✅ Add this lin
-                  completed: !!taskRaw.completed, // ensure boolean
+                    createdAt: taskRaw.createdAt, 
+                  completed: !!taskRaw.completed, 
                 };
 
                 return (

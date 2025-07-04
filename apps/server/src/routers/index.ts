@@ -9,7 +9,7 @@ const taskRoutes = new Hono();
 
 taskRoutes.post("/create", createTaskController);
 taskRoutes.get("/edit/:id", getTaskByIdController);
-taskRoutes.put("/edit/:id", editTaskController);    // PUT for update
+taskRoutes.put("/edit/:id", editTaskController);    
 taskRoutes.delete("/:id", deleteTaskController);
 taskRoutes.patch("/complete/:id", completeTaskController);
 

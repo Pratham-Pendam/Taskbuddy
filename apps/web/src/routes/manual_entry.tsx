@@ -34,10 +34,8 @@ function RouteComponent() {
       return res.json();
     },
     onSuccess: () => {
-      // ✅ Refresh the dashboard's task list if it's cached
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
 
-      // ✅ Navigate to dashboard
       navigate({ to: "/dashboard" });
     },
   });
@@ -93,39 +91,3 @@ function RouteComponent() {
   );
 }
 
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-// import { createFileRoute } from "@tanstack/react-router";
-
-// export const Route = createFileRoute("/manual_entry")({
-//   component: RouteComponent,
-// });
-
-// function RouteComponent() {
-//   return (
-//     <div className="min-h-screen flex justify-center items-center bg-muted px-4">
-//       <div className="w-full max-w-lg bg-white dark:bg-zinc-900 rounded-2xl shadow-xl p-8">
-//         <h1 className="text-3xl font-bold text-center mb-6">
-//           📝 Add Task Manually
-//         </h1>
-
-//         <div className="flex flex-col gap-4 z-50">
-//           <Input placeholder="Title" className="text-base" />
-//           <Input placeholder="Description" className="text-base" />
-//           <Select>
-//             <SelectTrigger className="w-[180px]">
-//               <SelectValue placeholder="Priority" />
-//             </SelectTrigger>
-//             <SelectContent>
-//               <SelectItem value="high">High</SelectItem>
-//               <SelectItem value="mid">Mid</SelectItem>
-//               <SelectItem value="low">Low</SelectItem>
-//             </SelectContent>
-//           </Select>
-//           <Button className="mt-2">Create Task</Button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

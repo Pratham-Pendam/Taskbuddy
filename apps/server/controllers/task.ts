@@ -36,30 +36,7 @@ export const createTaskController = async (c: Context) => {
   return c.json({ success: true, message: "Task created" });
 };
 
-// Editting
-// export const editTaskController = async (c: Context) => {
-//   const id = c.req.param("id");
-//   const body = await c.req.json();
-//   const parsed = updateTaskSchema.safeParse(body);
 
-//   if (!parsed.success) {
-//     return c.json({ error: "Invalid input", details: parsed.error.format() }, 400);
-//   }
-
-//   const updatedData = parsed.data;
-
-//   const result = await db
-//     .update(tasks)
-//     .set(updatedData)
-//     .where(eq(tasks.id, Number(id)))
-//     .returning();
-
-//   if (result.length === 0) {
-//     return c.json({ error: "Task not found" }, 404);
-//   }
-
-//   return c.json({ success: true, message: "Task updated" });
-// };
 export const editTaskController = async (c: Context) => {
   const id = c.req.param("id");
   const body = await c.req.json();
@@ -119,7 +96,6 @@ export const getTaskByIdController = async (c:Context) => {
   return c.json(task);
 };
 // completed
-// ✅ Mark task as completed
 export const completeTaskController = async (c: Context) => {
   const id = Number(c.req.param("id"));
 
