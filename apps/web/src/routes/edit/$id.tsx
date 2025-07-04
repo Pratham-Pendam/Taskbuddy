@@ -35,7 +35,7 @@ function EditTaskPage() {
   const { data: task, isLoading, isError } = useQuery({
     queryKey: ["task", id],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:3000/tasks/edit/${id}`);
+      const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/edit/${id}`);
       if (!res.ok) throw new Error("Failed to fetch task");
       return res.json();
     },
@@ -53,7 +53,7 @@ function EditTaskPage() {
   // Mutation to update task
   const updateTask = useMutation({
     mutationFn: async () => {
-      const res = await fetch(`http://localhost:3000/tasks/edit/${id}`, {
+      const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/edit/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, description, priority }),

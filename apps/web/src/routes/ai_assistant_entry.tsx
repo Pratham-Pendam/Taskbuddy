@@ -17,7 +17,7 @@ function RouteComponent() {
 
   const mutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch("http://localhost:3000/tasks/ai-create", {
+      const res = await fetch("https://taskbuddy-1-j3rl.onrender.com/tasks/ai-create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: input }),

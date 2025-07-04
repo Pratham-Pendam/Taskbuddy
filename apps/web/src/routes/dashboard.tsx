@@ -60,7 +60,7 @@ function RouteComponent() {
   } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:3000/tasks");
+      const res = await fetch("https://taskbuddy-1-j3rl.onrender.com/tasks");
       if (!res.ok) throw new Error("Failed to fetch tasks");
       const data = await res.json();
        return data.tasks;
@@ -69,7 +69,7 @@ function RouteComponent() {
 
   const deleteMutation = useMutation<number, Error, number>({
     mutationFn: async (id: number) => {
-      const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete task");
@@ -80,7 +80,7 @@ function RouteComponent() {
 
   const completeMutation = useMutation({
     mutationFn: async (id: number) => {
-      const res = await fetch(`http://localhost:3000/tasks/complete/${id}`, {
+      const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/complete/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ completed: true }),
