@@ -4,22 +4,47 @@ TaskBuddy is your personal productivity sidekick — meticulously built to make 
 
 ![Taskbuddy ](assets/Taskbuddy.png)
 
-## 🚀 How to Run Locally
 
-### ✅ STEP 1 – Clone the Repository
+
+---
+
+## 📦 Setup Instructions
+
+### STEP 01 - Clone the Project
 
 ```bash
-git clone https://github.com/Pratham-Pendam/Taskbuddy.git
-cd Taskbuddy
+git clone https://github.com/yourusername/ai-task-manager.git
+cd ai-task-manager
+```
 
-###STEP 2 - Create .env Files
+```bash
+conda activate mchatbot
+```
 
+### ✅ STEP 02- Install Dependencies
+
+```bash
+npm install
+```
+
+### ✅ STEP 03 - Create .env Files
+
+```bash
 DATABASE_URL="your_neon_postgres_url"
-GEMINI_API_KEY=your_gemini_api_key
+GEMINI_API_KEY="your_gemini_key"
+```
 
-### STEP 3 – Start the App with Docker
+### ✅ STEP 03 - Frontend 
 
-bash
-Copy
-Edit
+```bash
+VITE_BACKEND_URL="http://localhost:3001"
+
+```
+
+
+✅ STEP 04 - Run with Docker Compose
+
+```bash
 docker-compose up --build
+
+```
