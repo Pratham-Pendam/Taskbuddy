@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./apps/server
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./apps/server:/app
+      - /app/node_modules
+
+  frontend:
+    build:
+      context: ./apps/web
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules

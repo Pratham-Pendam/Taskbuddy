@@ -1,0 +1,14 @@
+{
+  "name": "better-t-stack",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c yellow,cyan \"npm run dev --workspace=server\" \"npm run dev --workspace=web\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
