@@ -1,4 +1,4 @@
-// routes/edit/$id.tsx
+
 import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
@@ -15,13 +15,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { X } from "lucide-react"; // 👈 import the X icon
 
-// Route declaration
 export const Route = createFileRoute("/edit/$id")({
   component: EditTaskPage,
 });
 
-// Component to render
 function EditTaskPage() {
   const { id } = useParams({ strict: false }) as { id: string };
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ function EditTaskPage() {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
 
-  // Fetch task data
   const { data: task, isLoading, isError } = useQuery({
     queryKey: ["task", id],
     queryFn: async () => {
@@ -41,7 +39,6 @@ function EditTaskPage() {
     },
   });
 
-  // Populate form when task is loaded
   useEffect(() => {
     if (task) {
       setTitle(task.title);
@@ -50,7 +47,6 @@ function EditTaskPage() {
     }
   }, [task]);
 
-  // Mutation to update task
   const updateTask = useMutation({
     mutationFn: async () => {
       const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/edit/${id}`, {
@@ -78,7 +74,15 @@ function EditTaskPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted px-4">
-      <div className="bg-white dark:bg-zinc-900 p-8 rounded-xl shadow-lg w-full max-w-md">
+      <div className="relative bg-white dark:bg-zinc-900 p-8 rounded-xl shadow-lg w-full max-w-md">
+        {/* ❌ Cancel Button */}
+        <button
+          onClick={() => navigate({ to: "/dashboard" })}
+          className="absolute top-4 right-4 text-zinc-500 hover:text-red-500"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
         <h1 className="text-3xl font-bold text-center mb-6">✏️ Edit Task</h1>
 
         {isLoading ? (
