@@ -12,13 +12,11 @@ export const AddTaskDialog = ({ open, onClose }: AddTaskDialogProps) => {
 
   return (
     <>
-      {/* Overlay */}
       <div
         className="fixed inset-0 bg-black bg-opacity-50 z-40"
         onClick={onClose}
       ></div>
 
-      {/* Dialog */}
       <div className="fixed top-1/2 left-1/2 z-50 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-xl">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Add a New Task</h2>

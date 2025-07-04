@@ -14,7 +14,7 @@ function RouteComponent() {
   const [input, setInput] = useState("");
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-
+// For creating tasks using Ai
   const mutation = useMutation({
     mutationFn: async () => {
       const res = await fetch("https://taskbuddy-1-j3rl.onrender.com/tasks/ai-create", {

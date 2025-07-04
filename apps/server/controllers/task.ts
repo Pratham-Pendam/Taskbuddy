@@ -13,9 +13,9 @@ const updateTaskSchema = z.object({
   title: z.string().min(1).optional(),
   description: z.string().optional(),
   priority: z.enum(["low", "mid", "high"]).optional(),
-  completed: z.boolean().optional(), // ✅ include this
+  completed: z.boolean().optional(), 
 });
-
+// Function :Task creation
 export const createTaskController = async (c: Context) => {
   const body = await c.req.json();
   const parsed = taskSchema.safeParse(body);
@@ -36,7 +36,7 @@ export const createTaskController = async (c: Context) => {
   return c.json({ success: true, message: "Task created" });
 };
 
-
+// Function: Task Edit
 export const editTaskController = async (c: Context) => {
   const id = c.req.param("id");
   const body = await c.req.json();
@@ -62,7 +62,7 @@ export const editTaskController = async (c: Context) => {
 };
 
 
-// Delete
+// Function: Task Delete
 export const deleteTaskController = async (c: Context) => {
   const id = Number(c.req.param("id"));
 
@@ -77,11 +77,10 @@ export const deleteTaskController = async (c: Context) => {
 
   return c.json({ success: true, message: "Task deleted" });
 };
-// getTasks
+// Function: get Tasks for edit
 export const getTaskByIdController = async (c:Context) => {
   const id = c.req.param("id");
 
-  // Query the tasks table using Drizzle ORM
   const result = await db
     .select()
     .from(tasks)
@@ -95,13 +94,13 @@ export const getTaskByIdController = async (c:Context) => {
 
   return c.json(task);
 };
-// completed
+// Function: Marking a task complete
 export const completeTaskController = async (c: Context) => {
   const id = Number(c.req.param("id"));
 
   const result = await db
     .update(tasks)
-    .set({ completed: true }) // ← Mark completed
+    .set({ completed: true }) 
     .where(eq(tasks.id, id))
     .returning();
 

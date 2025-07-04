@@ -15,12 +15,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { X } from "lucide-react"; // 👈 import the X icon
+import { X } from "lucide-react"; 
 
 export const Route = createFileRoute("/edit/$id")({
   component: EditTaskPage,
 });
-
 function EditTaskPage() {
   const { id } = useParams({ strict: false }) as { id: string };
   const navigate = useNavigate();
@@ -29,11 +28,11 @@ function EditTaskPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
-
   const { data: task, isLoading, isError } = useQuery({
     queryKey: ["task", id],
     queryFn: async () => {
-      const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/edit/${id}`);
+      const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/edit/${id}`);// Fetches the task data 
+
       if (!res.ok) throw new Error("Failed to fetch task");
       return res.json();
     },
@@ -46,7 +45,7 @@ function EditTaskPage() {
       setPriority(task.priority);
     }
   }, [task]);
-
+// update editted tasks
   const updateTask = useMutation({
     mutationFn: async () => {
       const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/edit/${id}`, {
@@ -75,7 +74,6 @@ function EditTaskPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted px-4">
       <div className="relative bg-white dark:bg-zinc-900 p-8 rounded-xl shadow-lg w-full max-w-md">
-        {/* ❌ Cancel Button */}
         <button
           onClick={() => navigate({ to: "/dashboard" })}
           className="absolute top-4 right-4 text-zinc-500 hover:text-red-500"

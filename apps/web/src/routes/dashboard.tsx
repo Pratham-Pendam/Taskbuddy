@@ -1,11 +1,5 @@
 import {
   useState,
-  type JSXElementConstructor,
-  type Key,
-  type ReactElement,
-  type ReactNode,
-  type ReactPortal,
-  type SetStateAction,
 } from "react";
 import { Input } from "@/components/ui/input";
 import {
@@ -15,17 +9,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute} from "@tanstack/react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Ellipsis, Plus, Pencil, Trash2, X, Check } from "lucide-react";
-import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-  MenubarContent,
-} from "@/components/ui/menubar";
-import { MenubarItem } from "@radix-ui/react-menubar";
+
 import { AddTaskDialog } from "@/components/AddTaskDialog";
 import { FloatingAddButton } from "@/components/FloatingAddButton";
 import { TaskCard } from "@/components/TaskCard";
@@ -46,13 +32,13 @@ function RouteComponent() {
      createdAt: string;
     completed: boolean;
   };
-  const [editingTask, setEditingTask] = useState<Task | null>(null);
-  const [editedTitle, setEditedTitle] = useState("");
-  const [editedDescription, setEditedDescription] = useState("");
-  const [editedPriority, setEditedPriority] = useState("mid");
+  // const [editingTask, setEditingTask] = useState<Task | null>(null);
+  // const [editedTitle, setEditedTitle] = useState("");
+  // const [editedDescription, setEditedDescription] = useState("");
+  // const [editedPriority, setEditedPriority] = useState("mid");
 
   const queryClient = useQueryClient();
-
+// For rendering all the created Tasks by id 
   const {
     data: tasks = [],
     isLoading,
@@ -66,7 +52,7 @@ function RouteComponent() {
        return data.tasks;
     },
   });
-
+// for deleting a task by its ID.
   const deleteMutation = useMutation<number, Error, number>({
     mutationFn: async (id: number) => {
       const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/${id}`, {
@@ -77,7 +63,7 @@ function RouteComponent() {
     },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
   });
-
+// For marking a task complete when clicked 
   const completeMutation = useMutation({
     mutationFn: async (id: number) => {
       const res = await fetch(`https://taskbuddy-1-j3rl.onrender.com/tasks/complete/${id}`, {
@@ -91,7 +77,7 @@ function RouteComponent() {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
   });
 
-
+// For filtering based on tasks types like priority, complete or all
   const filteredTasks = tasks.filter(
     (task: { completed: boolean; priority: string; title: string }) => {
       const matchesPriority =
@@ -160,7 +146,7 @@ function RouteComponent() {
                   typeof taskRaw.description !== "string" ||
                   typeof taskRaw.priority !== "string"
                 ) {
-                  return null; // Skip invalid task
+                  return null; 
                 }
 
                 const task: Task = {
