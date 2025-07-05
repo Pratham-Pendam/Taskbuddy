@@ -31,12 +31,6 @@ DATABASE_URL="your_neon_postgres_url"
 GEMINI_API_KEY="your_gemini_key"
 ```
 
-### ✅ STEP 03 - Frontend 
-
-```bash
-VITE_BACKEND_URL="http://localhost:3001"
-
-```
 
 
 ✅ STEP 04 - Run with Docker Compose
