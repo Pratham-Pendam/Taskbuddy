@@ -39,3 +39,13 @@ GEMINI_API_KEY="your_gemini_key"
 docker-compose up --build
 
 ```
+
+## 🛠️ Tech Stack
+
+```bash
+- React + TanStack Router + TanStack Query 
+- Hono (Backend) with oRPC
+- PostgreSQL via Drizzle ORM
+- Gemini AI API
+- Hosted on Vercel & Render
+```
