@@ -16,9 +16,7 @@ TaskBuddy is your personal productivity sidekick — meticulously built to make 
 git clone https://github.com/yourusername/ai-task-manager.git
 ```
 
-```bash
-conda activate mchatbot
-```
+
 
 ### ✅ STEP 02- Install Dependencies
 
