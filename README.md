@@ -14,7 +14,6 @@ TaskBuddy is your personal productivity sidekick — meticulously built to make 
 
 ```bash
 git clone https://github.com/yourusername/ai-task-manager.git
-cd ai-task-manager
 ```
 
 ```bash
