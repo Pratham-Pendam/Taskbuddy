@@ -129,7 +129,7 @@ docker-compose up --build
 
 ````
 
-### ✅ Mark Task as Completedk
+### ✅ Mark Task as Completed
 
 ```bash
 | Feature          | Detail                     |
